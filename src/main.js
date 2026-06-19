@@ -6,7 +6,7 @@ import './styles/main.scss';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 if (!apiUrl) {
-  throw new Error('VITE_API_URL is not defined');
+  throw new Error('Zmienna API nie została zdefiniowana');
 }
 
 const main = async () => {
