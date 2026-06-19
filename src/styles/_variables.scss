@@ -1,0 +1,32 @@
+// Kolory
+$color-bg: #f9f7f5;
+$color-card-bg: #ffffff;
+$color-border: #e8e5e1;
+$color-text: #3d3530;
+$color-text-muted: #9b9390;
+$color-text-id: #c8c3bf;
+$color-price: #5c7a5c;
+
+// Cienie
+$shadow-card: 0 2px 8px rgba(120, 100, 80, 0.07);
+$shadow-card-hover: 0 4px 16px rgba(120, 100, 80, 0.13);
+
+// Spacing
+$space-xs: 0.25rem; // 4px
+$space-sm: 0.5rem; // 8px
+$space-md: 1rem; // 16px
+$space-lg: 1.5rem; // 24px
+$space-xl: 2rem; // 32px
+
+// Karta
+$card-padding: $space-lg;
+$card-radius: 12px;
+
+// Grid
+$grid-gap: $space-lg;
+$grid-cols-lg: 3;
+$grid-cols-md: 2;
+
+// Breakpointy
+$bp-md: 640px;
+$bp-lg: 1024px;

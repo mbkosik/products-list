@@ -1,4 +1,83 @@
+@use 'variables' as *;
+
 .list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat($grid-cols-lg, 1fr);
+  gap: $grid-gap;
+  padding: $space-xl $space-lg;
+  margin: 0;
+  list-style: none;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat($grid-cols-md, 1fr);
+  }
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// --- Karta produktu ---
+.list li {
+  background: $color-card-bg;
+  border: 1px solid $color-border;
+  border-radius: $card-radius;
+  padding: $card-padding;
+  box-shadow: $shadow-card;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+    transform: translateY(-2px);
+  }
+}
+
+// --- ID produktu ---
+.list li > p {
+  font-size: 0.7rem;
+  color: $color-text-id;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 $space-xs;
+}
+
+// --- Nazwa produktu ---
+.list li h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $color-text;
+  margin: 0 0 $space-md;
+  line-height: 1.3;
+}
+
+// --- Definition list (Cena, Kategoria) ---
+.list li dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-xs $space-md;
+  border-top: 1px solid $color-border;
+  padding-top: $space-md;
+}
+
+.list li dt {
+  font-size: 0.75rem;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  align-self: baseline;
+}
+
+.list li dd {
+  font-size: 0.9rem;
+  color: $color-text;
+  margin: 0;
+
+  // Cena — pierwsza dd
+  &:nth-of-type(1) {
+    color: $color-price;
+    font-weight: 500;
+  }
 }
