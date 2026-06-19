@@ -1,23 +1,25 @@
+import { fetchData } from './js/api';
+import { renderList } from './js/productList';
+
+import './styles/main.scss';
+
 const apiUrl = import.meta.env.VITE_API_URL;
 
 if (!apiUrl) {
   throw new Error('VITE_API_URL is not defined');
 }
 
-const fetchData = async (url) => {
+const main = async () => {
   try {
-    const response = await fetch(url);
+    const data = await fetchData(apiUrl);
 
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
+    if (!Array.isArray(data)) throw new Error('Format danych jest niepoprawny');
 
-    const result = await response.json();
-
-    console.log(result);
+    renderList(data);
   } catch (error) {
+    // TODO: display message in interface
     console.error(error.message);
   }
 };
 
-fetchData(apiUrl);
+main();
