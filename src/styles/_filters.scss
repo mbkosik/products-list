@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-md;
+  padding: $space-lg 0;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  label {
+    font-size: 0.75rem;
+    color: $color-text-muted;
+  }
+
+  select,
+  input {
+    padding: $space-sm $space-md;
+    border: 1px solid $color-border;
+    border-radius: $input-radius;
+    background: $color-card-bg;
+    color: $color-text;
+    font-size: 0.875rem;
+    font-family: inherit;
+    outline: none;
+
+    &:focus-visible {
+      outline: 2px solid $color-text;
+      outline-offset: 2px;
+      border-color: $color-text;
+    }
+  }
+
+  @media (max-width: $bp-md) {
+    flex-direction: column;
+
+    select,
+    input {
+      width: 100%;
+    }
+  }
+}

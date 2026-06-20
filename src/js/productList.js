@@ -1,9 +1,6 @@
-const createElement = (tag, text) => {
-  const element = document.createElement(tag);
-  element.textContent = text;
-
-  return element;
-};
+import { state } from './state';
+import { appendApp, getFilterFromUrl } from './utils';
+import { createElement } from './utils';
 
 const createDetailEntry = (term, description) => {
   const termElement = createElement('dt', term);
@@ -30,14 +27,30 @@ const renderItem = (item) => {
   return itemElement;
 };
 
-export const renderList = (data) => {
-  const app = document.querySelector('#app');
+export const filterAndRender = () => {
+  const data = state.products;
 
-  if (!app) throw new Error('Brak kontenera aplikacji w strukturze HTML');
+  const category = getFilterFromUrl('category');
+  const minPrice = getFilterFromUrl('minPrice');
+  const maxPrice = getFilterFromUrl('maxPrice');
+
+  const filtered = data.filter(
+    (product) =>
+      (!category || product.category === category) &&
+      (!minPrice || parseFloat(product.price) >= parseFloat(minPrice)) &&
+      (!maxPrice || parseFloat(product.price) <= parseFloat(maxPrice))
+  );
+
+  renderList(filtered);
+};
+
+export const renderList = (data) => {
+  const currentList = document.querySelector('.list');
+  currentList?.remove();
 
   const productsList = document.createElement('ul');
   productsList.classList.add('list');
   data.forEach((item) => productsList.appendChild(renderItem(item)));
 
-  app.appendChild(productsList);
+  appendApp(productsList);
 };

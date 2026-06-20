@@ -1,5 +1,7 @@
 import { fetchData } from './js/api';
-import { renderList } from './js/productList';
+import { renderFilters } from './js/filters';
+import { filterAndRender } from './js/productList';
+import { state } from './js/state';
 
 import './styles/main.scss';
 
@@ -15,7 +17,12 @@ const main = async () => {
 
     if (!Array.isArray(data)) throw new Error('Format danych jest niepoprawny');
 
-    renderList(data);
+    state.products = data;
+    renderFilters();
+    filterAndRender();
+
+    window.addEventListener('popstate', filterAndRender);
+    window.addEventListener('filtersChanged', filterAndRender);
   } catch (error) {
     // TODO: display message in interface
     console.error(error.message);
