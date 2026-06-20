@@ -15,69 +15,59 @@
   @media (max-width: $bp-md) {
     grid-template-columns: 1fr;
   }
-}
 
-// --- Karta produktu ---
-.list li {
-  background: $color-card-bg;
-  border: 1px solid $color-border;
-  border-radius: $card-radius;
-  padding: $card-padding;
-  box-shadow: $shadow-card;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  &__item {
+    background: $color-card-bg;
+    border: 1px solid $color-border;
+    border-radius: $card-radius;
+    padding: $card-padding;
+    box-shadow: $shadow-card;
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
 
-  &:hover {
-    box-shadow: $shadow-card-hover;
-    transform: translateY(-2px);
+    &:hover {
+      box-shadow: $shadow-card-hover;
+      transform: translateY(-2px);
+    }
   }
-}
 
-// --- ID produktu ---
-.list li > p {
-  font-size: 0.7rem;
-  color: $color-text-id;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0 0 $space-xs;
-}
+  &__item-id {
+    font-size: 0.7rem;
+    color: $color-text-id;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 $space-xs;
+  }
 
-// --- Nazwa produktu ---
-.list li h2 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: $color-text;
-  margin: 0 0 $space-md;
-  line-height: 1.3;
-}
+  &__item-name {
+    font-size: $font-md;
+    font-weight: 600;
+    color: $color-text;
+    margin: 0 0 $space-md;
+    line-height: 1.3;
+  }
 
-// --- Definition list (Cena, Kategoria) ---
-.list li dl {
-  margin: 0;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: $space-xs $space-md;
-  border-top: 1px solid $color-border;
-  padding-top: $space-md;
-}
+  &__details {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $space-xs $space-md;
+    border-top: 1px solid $color-border;
+    padding-top: $space-md;
+  }
 
-.list li dt {
-  font-size: 0.75rem;
-  color: $color-text-muted;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  align-self: baseline;
-}
+  &__term {
+    font-size: $font-xs;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    align-self: baseline;
+  }
 
-.list li dd {
-  font-size: 0.9rem;
-  color: $color-text;
-  margin: 0;
-
-  // Cena — pierwsza dd
-  &:nth-of-type(1) {
-    color: $color-price;
-    font-weight: 500;
+  &__desc {
+    font-size: 0.9rem;
+    color: $color-text;
+    margin: 0;
   }
 }

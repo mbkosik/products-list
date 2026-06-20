@@ -25,9 +25,22 @@ export const createInput = (type, id, label) => {
   return inputContainer;
 };
 
+export const updateParam = (key, value) => {
+  const url = new URL(window.location.href);
+  url.searchParams.set(key, value);
+  if (key !== 'page') url.searchParams.delete('page');
+  window.history.replaceState({}, '', url);
+  window.dispatchEvent(new CustomEvent('paramChanged'));
+};
+
 export const getFilterFromUrl = (paramKey) => {
   const params = new URLSearchParams(window.location.search);
   return params.get(paramKey);
+};
+
+export const getPageFromUrl = () => {
+  const page = parseInt(getFilterFromUrl('page'), 10);
+  return page >= 1 ? page : 1;
 };
 
 export const appendApp = (element) => {

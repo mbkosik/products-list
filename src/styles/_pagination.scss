@@ -1,0 +1,67 @@
+@use 'variables' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  margin-top: $space-xl;
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+  }
+
+  &__btn,
+  &__page {
+    padding: $space-sm $space-md;
+    border: 1px solid $color-border;
+    border-radius: $input-radius;
+    background: $color-card-bg;
+    color: $color-text;
+    font-size: $font-sm;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+      background 0.15s,
+      border-color 0.15s;
+
+    &:hover:not(:disabled) {
+      background: $color-bg;
+      border-color: $color-text-muted;
+    }
+
+    &:disabled {
+      color: $color-text-muted;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__page--active {
+    background: $color-text;
+    color: $color-card-bg;
+    border-color: $color-text;
+
+    &:hover {
+      background: $color-text;
+    }
+  }
+
+  &__ellipsis {
+    padding: $space-sm $space-xs;
+    color: $color-text-muted;
+    font-size: $font-sm;
+  }
+
+  @media (max-width: $bp-md) {
+    gap: $space-xs;
+
+    &__btn,
+    &__page {
+      padding: $space-xs $space-sm;
+      font-size: $font-xs;
+    }
+  }
+}

@@ -22,7 +22,7 @@ const main = async () => {
     filterAndRender();
 
     window.addEventListener('popstate', filterAndRender);
-    window.addEventListener('filtersChanged', filterAndRender);
+    window.addEventListener('paramChanged', filterAndRender);
   } catch (error) {
     // TODO: display message in interface
     console.error(error.message);

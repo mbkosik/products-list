@@ -1,5 +1,5 @@
 import { state } from './state';
-import { appendApp, createInput, createLabel, getFilterFromUrl } from './utils';
+import { appendApp, createInput, createLabel, getFilterFromUrl, updateParam } from './utils';
 
 const createSelect = (options, name, label) => {
   const selectContainer = document.createElement('div');
@@ -27,19 +27,6 @@ const createSelect = (options, name, label) => {
   selectContainer.append(selectLabel, select);
 
   return selectContainer;
-};
-
-const updateParam = (event) => {
-  if (!(event instanceof Event) || !event.target) return;
-
-  const value = event.target.value;
-  const id = event.target.id;
-  const url = new URL(window.location.href);
-
-  url.searchParams.set(id, value);
-
-  window.history.replaceState({}, '', url);
-  window.dispatchEvent(new CustomEvent('filtersChanged'));
 };
 
 const handleFilterEvents = (...elements) => {
@@ -71,7 +58,7 @@ const handleFilterEvents = (...elements) => {
 
   inputs.forEach((inputChild) => {
     if (inputChild instanceof HTMLInputElement || inputChild instanceof HTMLSelectElement) {
-      inputChild.addEventListener('change', updateParam);
+      inputChild.addEventListener('change', (e) => updateParam(e.target.id, e.target.value));
     }
   });
 };
