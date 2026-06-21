@@ -3,10 +3,12 @@
 .list {
   display: grid;
   grid-template-columns: repeat($grid-cols-lg, 1fr);
-  gap: $grid-gap;
+  gap: $space-lg;
   padding: $space-xl $space-lg;
   margin: 0;
   list-style: none;
+  flex: 1;
+  align-content: start;
 
   @media (max-width: $bp-lg) {
     grid-template-columns: repeat($grid-cols-md, 1fr);
@@ -17,18 +19,18 @@
   }
 
   &__item {
-    background: $color-card-bg;
+    background: $color-white;
     border: 1px solid $color-border;
-    border-radius: $card-radius;
-    padding: $card-padding;
-    box-shadow: $shadow-card;
+    border-radius: $radius-lg;
+    padding: $space-lg;
+    box-shadow: $shadow-base;
     transition:
       box-shadow 0.2s ease,
       transform 0.2s ease;
     cursor: pointer;
 
     &:hover {
-      box-shadow: $shadow-card-hover;
+      box-shadow: $shadow-elevated;
       transform: translateY(-2px);
     }
   }

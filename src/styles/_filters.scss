@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: $space-md;
-  padding: $space-lg 0;
+  padding: $space-lg;
 
   > div {
     display: flex;
@@ -21,8 +21,8 @@
   input {
     padding: $space-sm $space-md;
     border: 1px solid $color-border;
-    border-radius: $input-radius;
-    background: $color-card-bg;
+    border-radius: $radius-md;
+    background: $color-white;
     color: $color-text;
     font-size: $font-sm;
     font-family: inherit;
@@ -39,7 +39,7 @@
     align-self: flex-end;
     padding: $space-sm $space-md;
     border: 1px solid $color-border;
-    border-radius: $input-radius;
+    border-radius: $radius-md;
     background: transparent;
     color: $color-text-muted;
     font-size: $font-sm;

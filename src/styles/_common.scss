@@ -1,7 +1,7 @@
 @use 'variables' as *;
 
 [data-stock='true'] {
-  color: $color-price;
+  color: $color-accent;
 }
 
 [data-stock='false'] {
@@ -14,4 +14,5 @@
   color: $color-text-muted;
   font-size: $font-md;
   margin: 0;
+  flex: 1;
 }

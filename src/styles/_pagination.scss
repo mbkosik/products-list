@@ -6,6 +6,7 @@
   justify-content: center;
   gap: $space-sm;
   margin-top: $space-xl;
+  margin-bottom: $space-xl;
 
   &__pages {
     display: flex;
@@ -17,8 +18,8 @@
   &__page {
     padding: $space-sm $space-md;
     border: 1px solid $color-border;
-    border-radius: $input-radius;
-    background: $color-card-bg;
+    border-radius: $radius-md;
+    background: $color-white;
     color: $color-text;
     font-size: $font-sm;
     font-family: inherit;
@@ -41,7 +42,7 @@
 
   &__page--active {
     background: $color-text;
-    color: $color-card-bg;
+    color: $color-white;
     border-color: $color-text;
 
     &:hover {

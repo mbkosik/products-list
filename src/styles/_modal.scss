@@ -3,9 +3,9 @@
 .modal {
   padding: 0;
   border: 1px solid $color-border;
-  border-radius: $card-radius;
-  background: $color-card-bg;
-  box-shadow: $shadow-card-hover;
+  border-radius: $radius-lg;
+  background: $color-white;
+  box-shadow: $shadow-elevated;
   max-width: 560px;
   width: calc(100% - #{$space-xl} * 2);
 
@@ -38,9 +38,8 @@
     justify-content: center;
     width: 2rem;
     height: 2rem;
-    padding: 0;
     border: 1px solid $color-border;
-    border-radius: $input-radius;
+    border-radius: $radius-md;
     background: transparent;
     color: $color-text-muted;
     font-size: $font-xl;
@@ -56,7 +55,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid $color-price;
+      outline: 2px solid $color-accent;
       outline-offset: 2px;
     }
   }
@@ -93,7 +92,7 @@
   &__tag {
     background: $color-bg;
     border: 1px solid $color-border;
-    border-radius: 1em;
+    border-radius: 20%/50%;
     padding: $space-xs $space-sm;
     font-size: $font-xs;
     color: $color-text-muted;
