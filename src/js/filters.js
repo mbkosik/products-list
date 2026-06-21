@@ -1,6 +1,20 @@
 import { state } from './state';
 import { appendApp, createInput, createLabel, getFilterFromUrl, updateParam } from './utils';
 
+const FILTERS = ['category', 'minPrice', 'maxPrice'];
+
+const hasActiveFilters = () => {
+  const params = new URLSearchParams(window.location.search);
+  return FILTERS.some((key) => params.get(key));
+};
+
+const clearFilters = () => {
+  const url = new URL(window.location.href);
+  [...FILTERS, 'page'].forEach((key) => url.searchParams.delete(key));
+  window.history.replaceState({}, '', url);
+  window.dispatchEvent(new CustomEvent('paramChanged'));
+};
+
 const createSelect = (options, name, label) => {
   const selectContainer = document.createElement('div');
   const select = document.createElement('select');
@@ -76,7 +90,26 @@ export const renderFilters = () => {
   const minPriceInput = createInput('number', 'minPrice', 'Ustaw cenę minimalną: ');
   const maxPriceInput = createInput('number', 'maxPrice', 'Ustaw cenę maksymalną: ');
 
-  section.append(filtersSelect, minPriceInput, maxPriceInput);
+  const clearBtn = document.createElement('button');
+  clearBtn.type = 'button';
+  clearBtn.textContent = 'Wyczyść filtry';
+  clearBtn.classList.add('filters__clear');
+
+  const updateClearBtn = () => {
+    clearBtn.disabled = !hasActiveFilters();
+  };
+
+  clearBtn.addEventListener('click', () => {
+    section.querySelectorAll('input, select').forEach((el) => {
+      el.value = '';
+    });
+    clearFilters();
+  });
+
+  window.addEventListener('paramChanged', updateClearBtn);
+  updateClearBtn();
+
+  section.append(filtersSelect, minPriceInput, maxPriceInput, clearBtn);
 
   appendApp(section);
   handleFilterEvents(filtersSelect, minPriceInput, maxPriceInput);
