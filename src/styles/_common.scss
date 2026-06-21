@@ -7,3 +7,11 @@
 [data-stock='false'] {
   color: $color-text-muted;
 }
+
+.empty-state {
+  padding: $space-xl;
+  text-align: center;
+  color: $color-text-muted;
+  font-size: $font-md;
+  margin: 0;
+}

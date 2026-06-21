@@ -133,8 +133,15 @@ export const filterAndRender = () => {
 };
 
 export const renderList = (data) => {
-  const currentList = document.querySelector('.list');
-  currentList?.remove();
+  document.querySelector('.list')?.remove();
+  document.querySelector('.empty-state')?.remove();
+
+  if (!data.length) {
+    const emptyEl = createElement('p', 'Brak produktów spełniających kryteria wyszukiwania.');
+    emptyEl.classList.add('empty-state');
+    appendApp(emptyEl);
+    return;
+  }
 
   const productsList = document.createElement('ul');
   productsList.classList.add('list');
