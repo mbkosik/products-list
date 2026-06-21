@@ -1,5 +1,6 @@
 import { fetchData } from './js/api';
 import { renderFilters } from './js/filters';
+import { renderLoader } from './js/loader';
 import { filterAndRender } from './js/products';
 import { state } from './js/state';
 
@@ -12,6 +13,8 @@ if (!apiUrl) {
 }
 
 const main = async () => {
+  renderLoader();
+
   try {
     const data = await fetchData(apiUrl);
 
@@ -26,6 +29,8 @@ const main = async () => {
   } catch (error) {
     // TODO: display message in interface
     console.error(error.message);
+  } finally {
+    window.dispatchEvent(new CustomEvent('dataFetched'));
   }
 };
 

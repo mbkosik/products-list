@@ -1,0 +1,9 @@
+@use 'variables' as *;
+
+[data-stock='true'] {
+  color: $color-price;
+}
+
+[data-stock='false'] {
+  color: $color-text-muted;
+}

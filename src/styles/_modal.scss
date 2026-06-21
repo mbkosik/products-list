@@ -81,14 +81,6 @@
     margin: 0;
   }
 
-  &[data-stock='true'] {
-    color: $color-price;
-  }
-
-  &[data-stock='false'] {
-    color: $color-text-muted;
-  }
-
   &__tags {
     display: flex;
     flex-wrap: wrap;
