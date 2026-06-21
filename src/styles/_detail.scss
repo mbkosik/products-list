@@ -1,0 +1,18 @@
+@use 'variables' as *;
+
+.detail {
+  &__term {
+    font-size: $font-xs;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    align-self: baseline;
+  }
+
+  &__desc {
+    font-size: $font-sm;
+    color: $color-text;
+    font-weight: 500;
+    margin: 0;
+  }
+}

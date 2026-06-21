@@ -25,6 +25,48 @@ export const createInput = (type, id, label) => {
   return inputContainer;
 };
 
+export const createModal = () => {
+  const modal = document.createElement('dialog');
+  modal.classList.add('modal');
+  const content = document.createElement('div');
+
+  modal.append(content);
+
+  const getFocusable = () => [
+    ...modal.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    ),
+  ];
+
+  modal.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+  });
+
+  return { modal, content };
+};
+
 export const updateParam = (key, value) => {
   const url = new URL(window.location.href);
   url.searchParams.set(key, value);

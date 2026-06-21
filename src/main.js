@@ -1,6 +1,6 @@
 import { fetchData } from './js/api';
 import { renderFilters } from './js/filters';
-import { filterAndRender } from './js/productList';
+import { filterAndRender } from './js/products';
 import { state } from './js/state';
 
 import './styles/main.scss';
